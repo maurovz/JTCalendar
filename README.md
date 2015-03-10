@@ -82,6 +82,36 @@ Your UIViewController must implement `JTCalendarDataSource`
 
 ```
 
+### In Swift:
+```swift
+var calendar : JTCalendar!
+    
+@IBOutlet var calendarContentView: JTCalendarContentView!
+@IBOutlet var calendarMenuView: JTCalendarMenuView!
+    
+override func viewDidLoad() {
+    super.viewDidLoad()
+    self.calendar = JTCalendar()
+    self.calendar.menuMonthsView = calendarMenuView
+    self.calendar.contentView = calendarContentView
+    self.calendar.dataSource = self
+    self.calendar.reloadData()
+
+}
+
+override func viewDidLayoutSubviews() {
+    self.calendar.repositionViews()
+}
+
+func calendarHaveEvent(calendar: JTCalendar!, date: NSDate!) -> Bool {
+    return false
+}
+    
+func calendarDidDateSelected(calendar: JTCalendar!, date: NSDate!) {
+        
+}
+```
+
 For more informations about how organize events by date see the Example project.
 
 ### Switch to week view
